@@ -1,0 +1,26 @@
+<h2>Tarefas</h2>
+
+<div>Nome:</div>
+<div><input type="text" [(ngModel)]="nome" /></div>
+
+<div>Idade:</div>
+<div><input type="number" [(ngModel)]="idade" /></div>
+
+<br />
+
+<button (click)="tarefa.addItem()">Adicionar</button>
+<hr />
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Idade</th>
+  </tr>
+  <tr *ngFor="let item of list | async">
+    <td [title]="['chave: ' + item.key]">{{ item.nome }}</td>
+    <td>{{ item.idade }}</td>
+    <td>
+      <button (click)="deleteItem(item.key)" style="color: red">Remover</button>
+    </td>
+  </tr>
+</table>
